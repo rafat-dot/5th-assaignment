@@ -1,13 +1,28 @@
+import { Suspense } from "react";
 import Bannerr from "./component/bannerr";
 import Nav from "./component/nav";
+import Tecnologies from "./component/tecnologies/tecnologies";
 import "./main.css";
-function App() {
+import type { Technology } from "./type/tecnologytype";
 
+const technologiesFetch=async():Promise<Technology[]>=>{
+  const res= await fetch('/data.json')
+  const data= await res.json()
+  return data
+}
+
+function App() {
+  const technologiesPromise=technologiesFetch()
+console.log(technologiesPromise);
 
   return (
     <>
   <Nav />
-  <Bannerr></Bannerr>
+  <Bannerr/>
+  <Suspense fallback={<h2>LOADING ...</h2>}>
+    <Tecnologies technologiesPromise={technologiesPromise}/>
+  </Suspense>
+  
     </>
   )
 }

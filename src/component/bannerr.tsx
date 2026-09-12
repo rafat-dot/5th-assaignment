@@ -16,7 +16,7 @@ const Bannerr = () => {
                     </span>
                 </h1>
 
-                {/* Buttons - পাশাপাশি */}
+              
                 <div className="flex gap-4">
                     <button className="bg-linear-to-r from-[#FF5722]  to-[#7C3AED] text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:scale-105 transition-all duration-300">
                         Explore Technologies
