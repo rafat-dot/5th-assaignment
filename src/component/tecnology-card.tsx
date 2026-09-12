@@ -3,16 +3,19 @@ import type { Technology } from "../type/tecnologytype";
 
 interface TechnologyCardProps {
   technologies: Technology[];
+  stack: Technology[];
+  onAddToStack: (technology: Technology) => void;
 }
 
-const TechnologyCard = ({ technologies }: TechnologyCardProps) => {
+const TechnologyCard = ({ technologies,stack, onAddToStack }: TechnologyCardProps) => {
   return (
     <div className="grid grid-cols-3 gap-5">
 
-      {technologies.map((technology) => (
-        <div
+      {technologies.map((technology) => {
+        const isAdded = stack.some((item) => item.id === technology.id);
+        return <div
           key={technology.id}
-          className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition"
+         className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between"
         >
           {/* Top section */}
           <div className="flex items-start justify-between mb-6">
@@ -66,12 +69,19 @@ const TechnologyCard = ({ technologies }: TechnologyCardProps) => {
 
           {/* Button */}
           <button
-            className="w-full bg-[#080D1A] hover:bg-[#151c2d] text-white py-3 rounded-lg font-medium transition"
+          disabled={isAdded}
+          onClick={() => onAddToStack(technology)}
+
+          className={`w-full py-3 rounded-lg font-medium transition ${
+    isAdded
+      ? "bg-emerald-600 text-white cursor-not-allowed"
+      : "bg-[#080D1A] hover:bg-[#151c2d] text-white cursor-pointer"
+  }`}
           >
-            Add to Stack
+           {isAdded ? 'Added to Stack' : 'Add to Stack'}
           </button>
-        </div>
-      ))}
+        </div>;
+      })}
 
     </div>
   );

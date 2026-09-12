@@ -1,6 +1,7 @@
-import { use } from "react";
+import { use, useState } from "react";
 import Tecnology from "./tecnology";
 import type { Technology } from "../../type/tecnologytype";
+import Stack from "./stack";
 
 interface TecnologyProps {
   technologiesPromise: Promise<Technology[]>;
@@ -8,6 +9,20 @@ interface TecnologyProps {
 
 const Tecnologies = ({ technologiesPromise }: TecnologyProps) => {
   const tecnologies = use(technologiesPromise);
+    const [stack, setStack] = useState<Technology[]>([]);
+
+  const handleAddToStack = (tech: Technology) => {
+    if (!stack.some((item) => item.id === tech.id)) {
+      setStack([...stack, tech]);
+    }
+  };
+
+  const handleRemoveFromStack = (id: string | number) => {
+    setStack(stack.filter((item) => item.id !== id));
+  };
+const handleClearAll = () => {
+    setStack([]);
+  };
 
   return (
     <section className="container mx-auto px-4 py-10">
@@ -27,7 +42,17 @@ const Tecnologies = ({ technologiesPromise }: TecnologyProps) => {
       </div>
 
       {/* Technology Cards */}
-      <Tecnology tecnologies={tecnologies} />
+     <div className="flex gap-6 items-start">
+        <div className="grow">
+          <Tecnology
+            tecnologies={tecnologies}
+            stack={stack}
+            onAddToStack={handleAddToStack}
+          />
+        </div>
+
+        <Stack stack={stack} onRemoveFromStack={handleRemoveFromStack} onClearAll={handleClearAll}/>
+      </div>
 
     </section>
   );
