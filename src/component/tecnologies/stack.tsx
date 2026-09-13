@@ -13,7 +13,7 @@ interface StackProps {
 
 const Stack = ({ stack, onRemoveFromStack, onClearAll }: StackProps) => {
   return (
-    <div className="w-80 shrink-0 bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+    <div className="w-full lg:w-80 shrink-0 bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
       <h2 className="text-xl font-bold text-gray-900 mb-1">Your Stack</h2>
       <p className="text-sm text-gray-400 mb-5">
         {stack.length === 0

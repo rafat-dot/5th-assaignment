@@ -1,5 +1,5 @@
 import type { Technology } from "../../type/tecnologytype";
-import TechnologyCard from "../tecnology-card";
+import TechnologyCard from "./tecnology-card";
 
 interface TecnologyProps {
   tecnologies: Technology[];

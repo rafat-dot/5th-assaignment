@@ -51,7 +51,7 @@ const Tecnologies = ({ technologiesPromise }: TecnologyProps) => {
       </div>
 
       {/* Technology Cards */}
-     <div className="flex gap-6 items-start">
+     <div className="flex flex-col lg:flex-row gap-6 items-start">
         <div className="grow">
           <Tecnology
             tecnologies={tecnologies}
