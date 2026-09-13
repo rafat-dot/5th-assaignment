@@ -6,10 +6,10 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6">
         
       
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 pb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 pb-12 text-center md:text-left">
           
         
-          <div className="md:col-span-2 space-y-4">
+          <div className=" sm: col-span-2 md:col-span-2 space-y-4 flex flex-col items-center md:items-start">
             <img src={logo} alt="Dev Stack" className="h-8 object-contain" />
             
             <p className="text-gray-500 max-w-sm leading-relaxed text-sm">
@@ -17,7 +17,7 @@ const Footer = () => {
             </p>
 
             
-            <ul className="flex items-center gap-4 font-semibold text-gray-700 pt-2">
+            <ul className="flex items-center justify-cente md:justify-start gap-4 font-semibold text-gray-700 pt-2">
               <li>
                 <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-black transition">
                   GitHub
@@ -68,7 +68,7 @@ const Footer = () => {
         </div>
 
      
-        <div className="border-t border-gray-100 pt-6 flex flex-col md:flex-row items-center justify-between text-xs text-gray-400 gap-4">
+        <div className="border-t border-gray-100 pt-6 flex flex-col md:flex-row items-center justify-between text-xs text-gray-400 gap-4 text-center md:text-left">
           <p>© 2026 Dev Stack. All rights reserved.</p>
           
           <ul className="flex items-center gap-6">
